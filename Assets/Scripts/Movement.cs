@@ -2,24 +2,15 @@
 
 public class Movement : MonoBehaviour
 {
-    [Tooltip("Скорость поворота")]
-    public float speed = 5.0f;
+    public float playerSpeed;
 
-    private void FixedUpdate()
+    private void Update()
     {
-        var playerPlane = new Plane(Vector3.up, transform.position);
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (playerPlane.Raycast(ray, out var hitDist))
-        {
-            var targetPoint = ray.GetPoint(hitDist);
-            var targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed * Time.deltaTime);
-        }
+        transform.Translate(playerSpeed * Time.deltaTime * Vector3.forward);
+        /***
+        int.Parse(Console.ReadLine());
+        for (int i = 1; i <= 100; i++)
+        Console.WriteLine("yes");
+        */
     }
 }
-
-/***
-int.Parse(Console.ReadLine());
-for (int i = 1; i <= 100; i++)
-Console.WriteLine("yes");
-*/
