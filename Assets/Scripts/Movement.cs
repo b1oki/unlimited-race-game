@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,8 +14,8 @@ public class Movement : MonoBehaviour
     private const float RoadBlockLength = 10f;
     private const float WorldBackLimit = -RoadBlockLength;
     private float _roadLength;
-    private Transform[] _roadPieces;
-    private int _roadPiecesLength;
+    private List<Transform> _roadPieces;
+    private int _roadPiecesCount;
     private bool _isGameOver;
     private int _level = 0;
     private bool _isMoveSide;
@@ -21,10 +23,14 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         _isGameOver = false;
-        var roadChildren = road.GetComponentsInChildren<Transform>();
-        _roadPieces = roadChildren.Skip(1).ToArray();
-        _roadPiecesLength = _roadPieces.Length;
-        _roadLength = RoadBlockLength * _roadPiecesLength;
+        CreateWorld();
+    }
+
+    private void CreateWorld()
+    {
+        _roadPieces = road.GetComponentsInChildren<Transform>().Skip(1).ToList();
+        _roadPiecesCount = _roadPieces.Count();
+        _roadLength = RoadBlockLength * _roadPiecesCount;
     }
 
     private void Update()
