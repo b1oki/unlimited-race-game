@@ -7,15 +7,16 @@ public class Movement : MonoBehaviour
     public Text levelBar;
     public Text haulBar;
     public GameObject road;
-    private Transform[] _roadPieces;
 
     private const float RoadSpeed = 5f;
     private const float RoadBlockLength = 10f;
+    private const float WorldBackLimit = -RoadBlockLength;
     private float _roadLength;
+    private Transform[] _roadPieces;
+    private int _roadPiecesLength;
     private bool _isGameOver;
     private int _level = 0;
     private bool _isMoveSide;
-    private int _roadPiecesLength;
 
     private void Start()
     {
@@ -38,7 +39,7 @@ public class Movement : MonoBehaviour
         {
             var newRoadPos = roadBlock.position;
             newRoadPos.z -= RoadSpeed * Time.deltaTime;
-            if (newRoadPos.z < transform.position.z - RoadBlockLength)
+            if (newRoadPos.z < WorldBackLimit)
             {
                 newRoadPos.z += _roadLength;
             }
