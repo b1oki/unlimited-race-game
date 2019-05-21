@@ -28,6 +28,7 @@ public class Movement : MonoBehaviour
 
     private void CreateWorld()
     {
+        if (road is null) return;
         _roadPieces = road.GetComponentsInChildren<Transform>().Skip(1).ToList();
         _roadPiecesCount = _roadPieces.Count();
         _roadLength = RoadBlockLength * _roadPiecesCount;
