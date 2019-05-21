@@ -52,40 +52,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="LoadingSpinner" substitutionGroup="engine:VisualElement" type="LoadingSpinnerType" />
-  <xs:complexType name="PackageAddFromIdFieldType">
-    <xs:complexContent mixed="false">
-      <xs:restriction base="engine:VisualElementType">
-        <xs:sequence minOccurs="0" maxOccurs="unbounded">
-          <xs:element ref="engine:VisualElement" />
-        </xs:sequence>
-        <xs:attribute default="" name="name" type="xs:string" use="optional" />
-        <xs:attribute default="" name="view-data-key" type="xs:string" use="optional" />
-        <xs:attribute default="Position" name="picking-mode" type="engine:VisualElement_picking-mode_Type" use="optional" />
-        <xs:attribute default="" name="tooltip" type="xs:string" use="optional" />
-        <xs:attribute default="0" name="tabindex" type="xs:int" use="optional" />
-        <xs:attribute default="false" name="focusable" type="xs:boolean" use="optional" />
-        <xs:anyAttribute processContents="lax" />
-      </xs:restriction>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="PackageAddFromIdField" substitutionGroup="engine:VisualElement" type="PackageAddFromIdFieldType" />
-  <xs:complexType name="PackageAddFromUrlFieldType">
-    <xs:complexContent mixed="false">
-      <xs:restriction base="engine:VisualElementType">
-        <xs:sequence minOccurs="0" maxOccurs="unbounded">
-          <xs:element ref="engine:VisualElement" />
-        </xs:sequence>
-        <xs:attribute default="" name="name" type="xs:string" use="optional" />
-        <xs:attribute default="" name="view-data-key" type="xs:string" use="optional" />
-        <xs:attribute default="Position" name="picking-mode" type="engine:VisualElement_picking-mode_Type" use="optional" />
-        <xs:attribute default="" name="tooltip" type="xs:string" use="optional" />
-        <xs:attribute default="0" name="tabindex" type="xs:int" use="optional" />
-        <xs:attribute default="false" name="focusable" type="xs:boolean" use="optional" />
-        <xs:anyAttribute processContents="lax" />
-      </xs:restriction>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="PackageAddFromUrlField" substitutionGroup="engine:VisualElement" type="PackageAddFromUrlFieldType" />
   <xs:complexType name="PackageDependenciesType">
     <xs:complexContent mixed="false">
       <xs:restriction base="engine:VisualElementType">
@@ -205,23 +171,6 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="PackageSampleList" substitutionGroup="engine:VisualElement" type="PackageSampleListType" />
-  <xs:complexType name="PackageSearchToolbarType">
-    <xs:complexContent mixed="false">
-      <xs:restriction base="engine:VisualElementType">
-        <xs:sequence minOccurs="0" maxOccurs="unbounded">
-          <xs:element ref="engine:VisualElement" />
-        </xs:sequence>
-        <xs:attribute default="" name="name" type="xs:string" use="optional" />
-        <xs:attribute default="" name="view-data-key" type="xs:string" use="optional" />
-        <xs:attribute default="Position" name="picking-mode" type="engine:VisualElement_picking-mode_Type" use="optional" />
-        <xs:attribute default="" name="tooltip" type="xs:string" use="optional" />
-        <xs:attribute default="0" name="tabindex" type="xs:int" use="optional" />
-        <xs:attribute default="false" name="focusable" type="xs:boolean" use="optional" />
-        <xs:anyAttribute processContents="lax" />
-      </xs:restriction>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="PackageSearchToolbar" substitutionGroup="engine:VisualElement" type="PackageSearchToolbarType" />
   <xs:complexType name="PackageStatusBarType">
     <xs:complexContent mixed="false">
       <xs:restriction base="engine:VisualElementType">
