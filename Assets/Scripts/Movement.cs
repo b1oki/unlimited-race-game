@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,28 +8,33 @@ public class Movement : MonoBehaviour
     public Text haulBar;
     public GameObject road;
 
-    private const float RoadSpeed = 5f;
-    private const float RoadBlockLength = 10f;
-    private const float WorldBackLimit = -RoadBlockLength;
+    public float roadSpeed;
+    public float roadBlockLength;
+    
+    private float _worldBackLimit;
     private float _roadLength;
     private List<Transform> _roadPieces;
-    private int _roadPiecesCount;
+    private int _roadPiecesLength;
     private bool _isGameOver;
-    private int _level = 0;
+    private int _level;
     private bool _isMoveSide;
 
     private void Start()
     {
+        _worldBackLimit = -roadBlockLength;
+        var roadChildren = road.GetComponentsInChildren<Transform>();
+        _roadPieces = new List<Transform>();
+        foreach (var roadChild in roadChildren)
+        {
+            if (roadChild.CompareTag("Road Block"))
+            {
+                _roadPieces.Add(roadChild);
+            }
+        }
+        _roadPiecesLength = _roadPieces.Count;
+        _roadLength = roadBlockLength * _roadPiecesLength;
+        _level = 0;
         _isGameOver = false;
-        CreateWorld();
-    }
-
-    private void CreateWorld()
-    {
-        if (road is null) return;
-        _roadPieces = road.GetComponentsInChildren<Transform>().Skip(1).ToList();
-        _roadPiecesCount = _roadPieces.Count();
-        _roadLength = RoadBlockLength * _roadPiecesCount;
     }
 
     private void Update()
@@ -45,8 +48,8 @@ public class Movement : MonoBehaviour
         foreach (var roadBlock in _roadPieces)
         {
             var newRoadPos = roadBlock.position;
-            newRoadPos.z -= RoadSpeed * Time.deltaTime;
-            if (newRoadPos.z < WorldBackLimit)
+            newRoadPos.z -= roadSpeed * Time.deltaTime;
+            if (newRoadPos.z < _worldBackLimit)
             {
                 newRoadPos.z += _roadLength;
             }

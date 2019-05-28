@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Barrier
   - Ground
+  - Road Block
   layers:
   - Default
   - TransparentFX
