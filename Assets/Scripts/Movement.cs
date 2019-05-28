@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,23 +9,33 @@ public class Movement : MonoBehaviour
     public Text haulBar;
     public GameObject road;
 
-    private const float RoadSpeed = 5f;
-    private const float RoadBlockLength = 10f;
-    private const float WorldBackLimit = -RoadBlockLength;
+    public float RoadSpeed;
+    public float RoadBlockLength;
+    
+    private float WorldBackLimit;
     private float _roadLength;
-    private Transform[] _roadPieces;
+    private List<Transform> _roadPieces;
     private int _roadPiecesLength;
     private bool _isGameOver;
-    private int _level = 0;
+    private int _level;
     private bool _isMoveSide;
 
     private void Start()
     {
-        _isGameOver = false;
+        WorldBackLimit = -RoadBlockLength;
         var roadChildren = road.GetComponentsInChildren<Transform>();
-        _roadPieces = roadChildren.Skip(1).ToArray();
-        _roadPiecesLength = _roadPieces.Length;
+        _roadPieces = new List<Transform>();
+        foreach (var roadChild in roadChildren)
+        {
+            if (roadChild.CompareTag("Ground"))
+            {
+                _roadPieces.Add(roadChild);
+            }
+        }
+        _roadPiecesLength = _roadPieces.Count;
         _roadLength = RoadBlockLength * _roadPiecesLength;
+        _level = 0;
+        _isGameOver = false;
     }
 
     private void Update()
