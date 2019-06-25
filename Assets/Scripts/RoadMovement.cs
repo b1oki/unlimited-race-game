@@ -11,7 +11,7 @@ public class RoadMovement : MonoBehaviour
     private void Start()
     {
         _roadLength = GetComponent<Collider>().bounds.size.z;
-        _roadStartPosition = transform.localPosition.z;
+        _roadStartPosition = transform.position.z;
         _roadBackLimit = -20.0f;
     }
 
@@ -22,12 +22,12 @@ public class RoadMovement : MonoBehaviour
 
     private void MoveWorld()
     {
-        var newRoadPos = transform.localPosition;
+        var newRoadPos = transform.position;
         newRoadPos.z -= roadSpeed * Time.deltaTime;
         if (newRoadPos.z < _roadBackLimit)
         {
             newRoadPos.z = _roadStartPosition;
         }
-        transform.localPosition = newRoadPos;
+        transform.position = newRoadPos;
     }
 }
