@@ -14,10 +14,7 @@ public class RoadMovement : MonoBehaviour
         _roadBackLimit = -20.0f;
     }
 
-    private void Update()
-    {
-        MoveWorld();
-    }
+    private void Update() => MoveWorld();
 
     private void MoveWorld()
     {
