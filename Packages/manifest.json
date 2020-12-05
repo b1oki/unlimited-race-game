@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "com.unity.ads": "3.5.0",
+    "com.unity.ads": "3.5.2",
     "com.unity.analytics": "3.5.3",
-    "com.unity.ext.nunit": "1.0.0",
+    "com.unity.ext.nunit": "1.0.5",
     "com.unity.ide.vscode": "1.2.3",
     "com.unity.purchasing": "2.1.1",
     "com.unity.textmeshpro": "3.0.1",
